@@ -7,11 +7,11 @@ const main = async () => {
 
     //CREAR USUARIO
     UserModel.create({
-        correo:"skymotion99@.com",
-        identificacion:"1070121011",
-        nombre: "sky1",
-        apellido: "motion1",
-        rol: Enum_Rol.administrador,
+        correo:"skymotionUser2@.com",
+        identificacion:"1070123",
+        nombre: "sky2",
+        apellido: "motion2",
+        rol: Enum_Rol.estudiante,
     })
     .then((u) =>{
          console.log('usuario creado', u);
@@ -28,6 +28,32 @@ const main = async () => {
     //     .catch((e) =>{
     //         console.error('error obtenido los usuarios', e)
     //     });
+
+    //EDITAR(parametro) UN USUARIO 
+    // await UserModel.findOneAndUpdate(
+    //     { correo: 'skymotion@.com' }, //filtro
+    //     { //cambios
+    //         nombre: 'juan',
+    //         apellido: 'vaquiro',
+    //         rol: Enum_Rol.lider,
+    //     }
+    // ).then((u) => {
+    //     console.log('usuario actualizado', u);
+    // }).catch((e) => {
+    //     console.error('Error Actualizar', e); 
+    // });
+
+    //ELIMINAR USUARIO
+    // await UserModel.findOneAndDelete( 
+    //     { correo: 'skymotion@.com' }) //filtro
+    //     .then((u) => {
+    //         console.log('usuario eliminado', u);
+    //     })
+    //     .catch((e) =>{
+    //         console.error('error eliminar', e);
+    //     });
+
+    
 };
 
 main ();
