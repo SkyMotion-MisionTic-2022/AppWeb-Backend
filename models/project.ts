@@ -8,24 +8,26 @@ interface Proyecto {
     fechaFin: Date,
     estado: Enum_EstadoProyecto,
     fase: Enum_FaseProyecto,
+    lider: string;
 }
 
 const projectSchema = new Schema<Proyecto>({
     nombre:{
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     presupuesto:{
         type: Number,
-        required: true
+        required: true,
     },
     fechaInicio: {
         type: Date,
-        required: true
+        required: true,
     },
     fechaFin: {
         type: Date,
-        required: true
+        required: true,
     },
     estado:{
         type: String,
@@ -36,6 +38,10 @@ const projectSchema = new Schema<Proyecto>({
         type: String,
         enum: Enum_FaseProyecto,
         default: Enum_FaseProyecto.nulo,
+    },
+    lider: {
+        type: String,
+        required: true,
     },
 });
 
