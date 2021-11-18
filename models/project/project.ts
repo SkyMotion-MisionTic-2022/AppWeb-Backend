@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
-import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from './enums';
-
+import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from '../enums/enums';
+import {UserModel } from '../user';
 interface Proyecto {
     nombre: string;
     presupuesto: number; //float
@@ -8,7 +8,7 @@ interface Proyecto {
     fechaFin: Date,
     estado: Enum_EstadoProyecto,
     fase: Enum_FaseProyecto,
-    lider: string;
+    lider: string,
     objetivos: [{ descripcion: String; tipo: Enum_TipoObjetivo }];
 }
 
@@ -33,16 +33,18 @@ const projectSchema = new Schema<Proyecto>({
     estado:{
         type: String,
         enum: Enum_EstadoProyecto,
-        default: Enum_EstadoProyecto.inactivo,
+        default: Enum_EstadoProyecto.INACTIVO,
     },
     fase:{
         type: String,
         enum: Enum_FaseProyecto,
-        default: Enum_FaseProyecto.nulo,
+        default: Enum_FaseProyecto.NULO,
     },
     lider: {
-        type: String,
-        required: true,
+       
+       type: String,
+       required: true,
+      
     },
     objetivos: [
         {

@@ -1,10 +1,28 @@
 import conectarDB from "./db/db";
-import { UserModel } from './models/user';
-import { Enum_Rol } from "./models/enums";
-import { ProyectoModel } from "./models/project";
+import { ProyectoModel } from "./models/project/project";
+import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from './models/enums/enums';
 
 const main = async () => {
     await conectarDB ();
+   
+    
+      const proyectoCreado = await ProyectoModel.create({
+        nombre: 'Proyecto Mision TIC',
+        fechaInicio: new Date('2021/12/24'),
+        fechaFin: new Date('2022/12/24'),
+        presupuesto: 120000,
+        lider: "Juan",
+        objetivos: [
+          { descripcion: 'Este es el objetivo general', tipo: Enum_TipoObjetivo.GENERAL },
+          { descripcion: 'Este es el objetivo especifico 1', tipo: Enum_TipoObjetivo.ESPECIFICO },
+          { descripcion: 'Este es el objetivo especifico 2', tipo: Enum_TipoObjetivo.ESPECIFICO },
+        ],
+      });
+    
+   /* const consultaProyectoConObjetivos3 = async () => {
+      const proyectoreado = await ProyectoModel.find({ id: proyectoCreado._id });
+      console.log('proyecto', proyectoreado);
+    };*/
 
     //relacion debil
     // ProyectoModel.create ({
@@ -22,11 +40,11 @@ const main = async () => {
     //     });
 
     // referencia debil querys
-    const proyecto = await ProyectoModel.find({ nombre: 'Proyecto 3' }); //modelo base
-        console.log('el proyecto es :', proyecto, proyecto[0].lider); 
+   // const proyecto = await ProyectoModel.find({ nombre: 'Proyecto 3' }); //modelo base
+     //   console.log('el proyecto es :', proyecto, proyecto[0].lider); 
     
-    const lider = await UserModel.find ({ _id: proyecto[0].lider }) //campo
-        console.log( 'el lider del proyecto es: ', lider);
+   // const lider = await UserModel.find ({ _id: proyecto[0].lider }) //campo
+     //   console.log( 'el lider del proyecto es: ', lider);
 
     //CREAR USUARIO
     // UserModel.create({
