@@ -3,13 +3,13 @@ import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
 import conectarDB from './db/db';
-import { typeDefs } from './graphql/types';
+import { types } from './graphql/types';
 import { resolvers } from './graphql/resolvers';
 
 dotenv.config();
 
 const server = new ApolloServer({
-    typeDefs : typeDefs,
+    typeDefs : types,
     resolvers : resolvers,
 });
 
@@ -24,4 +24,7 @@ app.listen({ port: process.env.PORT || 4000 }, async () => {
     server.applyMiddleware( { app });
 
     console.log('servidor encendido');
+
+    
 });
+
