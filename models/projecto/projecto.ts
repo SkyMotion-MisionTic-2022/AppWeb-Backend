@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from '../enums/enums';
-import {UserModel } from '../user';
+import { ModeloUsuario } from '../user';
 interface Proyecto {
     nombre: string;
     presupuesto: number; //float
@@ -44,7 +44,7 @@ const projectSchema = new Schema<Proyecto>({
        
        type: String,
        required: true,
-      
+    
     },
     objetivos: [
         {
@@ -61,4 +61,4 @@ const projectSchema = new Schema<Proyecto>({
       ],
 });
 
-export const ProyectoModel = model('Proyecto', projectSchema );
+export const ModeloProyecto = model('Proyecto', projectSchema );

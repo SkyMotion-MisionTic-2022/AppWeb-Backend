@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const enumTypes = gql`
+const tiposEnums = gql`
   enum Enum_EstadoUsuario {
     PENDIENTE
     AUTORIZADO
@@ -28,7 +28,8 @@ const enumTypes = gql`
   enum Enum_EstadoInscripcion {
     ACEPTADA
     RECHAZADA
+    PENDIENTE
   }
 `;
 
-export { enumTypes };
+export { tiposEnums };

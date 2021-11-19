@@ -1,4 +1,4 @@
-import { ProyectoModel } from "./project";
+import { ProyectoModel } from "./projecto";
 
 const projectResolvers = {
   Query: {

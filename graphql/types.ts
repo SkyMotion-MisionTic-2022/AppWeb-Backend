@@ -1,4 +1,15 @@
-import { projectTypes } from '../models/project/types';
-import { enumTypes } from '../models/enums/types';
+import { gql } from 'apollo-server-express';
+import { tiposProyecto } from '../models/project/types.js';
+import { TiposInscripciones } from '../models/inscripcion/tipos.js'
+import { tiposEnums } from '../models/enums/tipos.js';
 
-export const types = [projectTypes, enumTypes];
+const tiposGlobales = gql`
+    scalar Date
+`;
+
+export const tipos = [
+    tiposGlobales,
+    tiposEnums,
+    tiposProyecto,
+    TiposInscripciones
+];

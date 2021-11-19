@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const projectTypes = gql`
+const tiposProyectos = gql`
   scalar Date
   type Objetivo {
     _id: ID!
@@ -39,4 +39,4 @@ const projectTypes = gql`
   }
 `;
 
-export { projectTypes };
+export { tiposProyectos };
