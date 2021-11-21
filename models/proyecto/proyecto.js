@@ -33,8 +33,8 @@ const projectSchema = new Schema({
     },
     lider: {
        
-       type: String,
-       required: true,
+      type: Schema.Types.ObjectId,
+      ref: UserModel,
     
     },
     objetivos: [

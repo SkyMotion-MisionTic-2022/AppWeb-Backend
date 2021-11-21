@@ -26,7 +26,7 @@ type Proyecto {
   fechaFin: Date!
   estado: Enum_EstadoProyecto!
   fase: Enum_FaseProyecto!
-  lider: String
+  lider: Usuario
   objetivos: [Objetivo]
 }
 type Query {
