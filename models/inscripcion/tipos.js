@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposInscripciones = gql`
+const tiposInscripcion = gql`
     type Inscripcion {
         _id: ID!
         proyecto: Proyecto!
@@ -25,4 +25,4 @@ const tiposInscripciones = gql`
     }
 `;
 
-export { tiposInscripciones }; 
+export { tiposInscripcion }; 

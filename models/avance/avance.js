@@ -28,8 +28,8 @@ const avanceSchema = new Schema ({
         ref: ModeloUsuario,
         required: true,
     },
-}),
+});
 
-const ModeloAvance = model ('Avanve', avanceSchema);
+const ModeloAvance = model ('Avance', avanceSchema);
 
 export { ModeloAvance };

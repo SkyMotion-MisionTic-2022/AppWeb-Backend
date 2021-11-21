@@ -1,6 +1,6 @@
 import  mongoose  from 'mongoose';
 const { Schema, model } = mongoose;
-import { UserModel } from '../usuario/usuario.js';
+import { ModeloUsuario } from '../usuario/usuario.js';
 
 
 const projectSchema = new Schema({
@@ -34,7 +34,7 @@ const projectSchema = new Schema({
     lider: {
        
       type: Schema.Types.ObjectId,
-      ref: UserModel,
+      ref: ModeloUsuario,
     
     },
     objetivos: [
