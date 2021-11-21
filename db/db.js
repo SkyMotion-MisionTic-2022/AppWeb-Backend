@@ -7,7 +7,7 @@ const conectarDB = async () =>{
     .then (() => {
         console.log('conexion exitosa');
      })
-     .catch ( e => {
+     .catch ( (e) => {
         console.error('Error conectnado a la bd', e);
      });
 };
