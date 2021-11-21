@@ -3,10 +3,10 @@ import { ModeloProyecto } from "./proyecto.js";
 const projectResolvers = {
   Query: {
     Proyectos: async (parent, args) => {
-      const proyectos = await ModeloProyecto.find();
+      const proyectos = await ModeloProyecto.find().populate('lider');
       return proyectos;
     },
-  },  
+  },
   Mutation: {
     crearProyecto: async (parent, args) => {
       const proyectoCreado = await ModeloProyecto.create({
@@ -20,6 +20,12 @@ const projectResolvers = {
         objetivos: args.objetivos,
       });
       return proyectoCreado;
+    },
+    eliminarProyecto: async (parent, args) => {
+      
+        const proyectoEliminado = await ModeloProyecto.findOneAndDelete({ _id: args._id });
+        return proyectoEliminado;
+     
     },
   },
 };
