@@ -1,6 +1,6 @@
-import { mongoose } from 'mongoose';
+import  mongoose  from 'mongoose';
 const { Schema, model } = mongoose;
-// import { Enum_Rol, Enum_EstadoUsuario } from '../enums/enums';
+
 
 const userSchema = new Schema({
   correo: {
@@ -30,12 +30,12 @@ const userSchema = new Schema({
   rol: {
     type: String,
     required: true,
-    enum: Enum_Rol,
+    enum: ["ESTUDIANTE","LIDER","ADMINISTRADOR"],
   },
   estado: {
     type: String,
-    enum: Enum_EstadoUsuario,
-    default: Enum_EstadoUsuario.PENDIENTE,
+    enum: ["PENDIENTE","AUTORIZADO","NO_AUTORIZADO"],
+    default: "PENDIENTE",
   },
 });
 
