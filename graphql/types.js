@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
-import { tiposProyecto } from '../models/proyecto/tipos.js';
-import { TiposInscripciones } from '../models/inscripcion/tipos.js'
+import { tiposProyectos } from '../models/proyecto/tipos.js';
+import { tiposInscripcion } from '../models/inscripcion/tipos.js'
 import { tiposEnums } from '../models/enums/tipos.js';
 
 const tiposGlobales = gql`
@@ -10,6 +10,6 @@ const tiposGlobales = gql`
 export const tipos = [
     tiposGlobales,
     tiposEnums,
-    tiposProyecto,
-    TiposInscripciones
+    tiposProyectos,
+    
 ];

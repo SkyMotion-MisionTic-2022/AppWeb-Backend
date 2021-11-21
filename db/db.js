@@ -1,9 +1,9 @@
-import { connect } from 'mongoose';
-// const { connect } = requiere ('Mongoose'); un modo de importo
+import mongoose from 'mongoose';
+//const { connect } = requiere ('Mongoose'); 
 
 
 const conectarDB = async () =>{
-    return await connect(process.env.DATABASE_URL)
+    return await mongoose.connect(process.env.DATABASE_URL)
     .then (() => {
         console.log('conexion exitosa');
      })

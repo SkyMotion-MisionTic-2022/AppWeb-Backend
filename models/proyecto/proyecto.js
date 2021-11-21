@@ -1,17 +1,7 @@
-import { mongoose } from 'mongoose';
-const { Schema, model } = 'mongoose';
+import  mongoose  from 'mongoose';
+const { Schema, model } = mongoose;
 import { UserModel } from '../usuario/usuario.js';
 
-// interface Proyecto {
-//     nombre: string;
-//     presupuesto: number; //float
-//     fechaInicio: Date;
-//     fechaFin: Date,
-//     estado: Enum_EstadoProyecto,
-//     fase: Enum_FaseProyecto,
-//     lider: string,
-//     objetivos: [{ descripcion: String; tipo: Enum_TipoObjetivo }];
-// }
 
 const projectSchema = new Schema({
     nombre:{
@@ -33,13 +23,13 @@ const projectSchema = new Schema({
     },
     estado:{
         type: String,
-        enum: Enum_EstadoProyecto,
-        default: Enum_EstadoProyecto.INACTIVO,
+        enum: ["ACTIVO","INACTIVO"],
+        default: "INACTIVO",
     },
     fase:{
         type: String,
-        enum: Enum_FaseProyecto,
-        default: Enum_FaseProyecto.NULO,
+        enum: ["INICIADO","DESARROLLO","TERMINADO","NULO"],
+        default: "NULO",
     },
     lider: {
        
@@ -55,7 +45,7 @@ const projectSchema = new Schema({
           },
           tipo: {
             type: String,
-            enum: Enum_TipoObjetivo,
+            enum: ["GENERAL","ESPECIFICO"],
             required: true,
           },
         },
