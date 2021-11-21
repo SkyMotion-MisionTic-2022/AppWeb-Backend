@@ -1,16 +1,16 @@
-import { ModeloInscripcion } from "./inscripcion.js";
+import { ModeloInscripciones } from "./inscripcion.js";
 
 const resolverInscripcion = {
     Query: {
         Inscripciones: async (parent, args) => {
-            const inscripciones = await ModeloInscripcion.find();
+            const inscripciones = await ModeloInscripciones.find();
             return inscripciones;
         }    
     },
 
     Mutation: {
         crearInscripcion: async (parent, args) => {
-            const inscripcionCreada = await ModeloInscripcion.create({
+            const inscripcionCreada = await ModeloInscripciones.create({
                 proyecto: args.proyecto,
                 estudiante: args.estudiante,
                 estado: args.estado
