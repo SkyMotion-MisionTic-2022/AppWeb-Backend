@@ -39,13 +39,13 @@ const projectSchema = new Schema({
     },
     objetivos: [
         {
-          descripcion: {
+          Descripcion: {
             type: String,
             required: true,
           },
           tipo: {
             type: String,
-            enum: ["GENERAL","ESPECIFICO"],
+            enum: ["GENERAL","ESPECÍFICO"],
             required: true,
           },
         },
