@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const tiposInscripcion = gql`
+const tiposInscripciones = gql`
     type Inscripcion {
         _id: ID!
         proyecto: Proyecto!
@@ -11,7 +11,7 @@ const tiposInscripcion = gql`
     }
 
     type Query {
-        Inscripciones: [Inscripciones]
+        Inscripciones: [Inscripcion]
     }
 
     type Mutation {
@@ -25,4 +25,4 @@ const tiposInscripcion = gql`
     }
 `;
 
-export { tiposInscripcion }; 
+export { tiposInscripciones }; 

@@ -5,12 +5,19 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   correo: {
     type: String,
-    required: true, 
+    required: true,
     unique: true,
     validate: {
       validator: (email) => {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
       },
+      // (email) => {
+      //   if (email.includes('@') && email.includes('.')) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // },
       message: 'El formato del correo electrónico está malo.',
     },
   },
@@ -30,12 +37,12 @@ const userSchema = new Schema({
   rol: {
     type: String,
     required: true,
-    enum: ["ESTUDIANTE","LIDER","ADMINISTRADOR"],
+    enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
   },
   estado: {
     type: String,
-    enum: ["PENDIENTE","AUTORIZADO","NO_AUTORIZADO"],
-    default: "PENDIENTE",
+    enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
+    default: 'PENDIENTE',
   },
 });
 

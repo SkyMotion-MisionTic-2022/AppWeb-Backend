@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { ModeloProyecto } from '../projecto/projecto.js';
-import { ModeloUsuario } from '../usuario/usuario.js';
+import { ModeloProyecto } from '../proyecto/proyecto.js';
+import { UserModel } from '../usuario/usuario.js';
 
 const { Schema, model } = mongoose;
 
@@ -12,7 +12,7 @@ const inscripcionSchema = new Schema({
     },
     estudiante: {
         type: Schema.Types.ObjectId,
-        ref: ModeloUsuario,
+        ref: UserModel,
         required: true,
     },
     estado: {
@@ -31,6 +31,6 @@ const inscripcionSchema = new Schema({
     },
 });
 
-const ModeloInscripcion = model ('Inscripcion', inscripcionSchema)
+const ModeloInscripciones = model ('Inscripcion', inscripcionSchema, 'inscripciones')
 
-export { ModeloInscripcion };
+export { ModeloInscripciones };
