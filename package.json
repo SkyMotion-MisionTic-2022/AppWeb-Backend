@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "type": "module",
   "dependencies": {
+    "@craco/craco": "^6.4.1",
     "@types/mongoose": "^5.11.97",
     "apollo-server-express": "^3.5.0",
     "cors": "^2.8.5",
