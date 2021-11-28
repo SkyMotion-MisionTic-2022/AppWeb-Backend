@@ -29,6 +29,7 @@ type Proyecto {
   lider: Usuario
   objetivos: [Objetivo]
   avances: [Avance]
+  inscripciones: [Inscripcion]
 }
 type Query {
   Proyectos: [Proyecto]
