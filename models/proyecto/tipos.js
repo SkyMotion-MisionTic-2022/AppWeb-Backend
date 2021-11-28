@@ -28,6 +28,7 @@ type Proyecto {
   fase: Enum_FaseProyecto
   lider: Usuario
   objetivos: [Objetivo]
+  avances: [Avance]
 }
 type Query {
   Proyectos: [Proyecto]
