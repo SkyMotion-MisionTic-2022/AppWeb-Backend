@@ -16,6 +16,6 @@ export const tipos = [
     tiposProyectos,
     tiposInscripcion,
     tiposUsuario,
-    tiposAvance, 
-    tiposAutentificación,
+    tiposAvance,  
+    tiposAutentificación,  
 ];
