@@ -4,18 +4,22 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "type": "module",
   "dependencies": {
+    "@craco/craco": "^6.4.1",
     "@types/mongoose": "^5.11.97",
     "apollo-server-express": "^3.5.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^16.0.1",
     "i": "^0.3.7",
-    "mongoose": "^6.0.12",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14",
     "mongoose-type-email": "^1.1.2",
     "mongoose-unique-validator": "^3.0.0",
     "ts-node": "^10.4.0",

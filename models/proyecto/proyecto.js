@@ -39,7 +39,7 @@ const projectSchema = new Schema({
     },
     objetivos: [
         {
-          Descripcion: {
+          descripcion: {
             type: String,
             required: true,
           },
@@ -50,6 +50,27 @@ const projectSchema = new Schema({
           },
         },
       ],
+},
+{
+  toJSON: { virtuals: true }, 
+  toObject: { virtuals: true },
 });
+
+projectSchema.virtual('avances', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
+projectSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
+
+
+
+
 
 export const ModeloProyecto = model('Proyecto', projectSchema );

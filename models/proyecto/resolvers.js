@@ -2,9 +2,15 @@ import { ModeloProyecto } from "./proyecto.js";
 
 const projectResolvers = {
   Query: {
-    Proyectos: async (parent, args) => {
-      const proyectos = await ModeloProyecto.find().populate('lider');
+    Proyectos: async (parent, args, context) => {
+      if(context.userData.rol=== "ADMINISTRADOR" || context.userData.rol=== "ESTUDIANTE" ){
+      const proyectos = await ModeloProyecto.find().populate('lider').populate("avances").populate("inscripciones");
       return proyectos;
+      }else if (context.userData.rol=== "LIDER"){
+        const proyectos = await ModeloProyecto.find({lider: context.userData._id});
+        return proyectos;
+      }
+      return null;
     },
   },
   Mutation: {

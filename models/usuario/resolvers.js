@@ -13,11 +13,15 @@ const resolversUsuario = {
   },
   Mutation: {
     crearUsuario: async (parent, args) => {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(args.password, salt);
+
       const usuarioCreado = await ModeloUsuario.create({
         nombre: args.nombre,
         apellido: args.apellido,
         identificacion: args.identificacion,
         correo: args.correo,
+        password: hashedPassword,
         rol: args.rol,
       });
 
@@ -28,14 +32,20 @@ const resolversUsuario = {
       return usuarioCreado;
     },
     editarUsuario: async (parent, args) => {
-      const usuarioEditado = await ModeloUsuario.findByIdAndUpdate(args._id, {
-        nombre: args.nombre,
-        apellido: args.apellido,
-        identificacion: args.identificacion,
-        correo: args.correo,
-        rol: args.rol,
-        estado: args.estado,
-      });
+      const usuarioEditado = await ModeloUsuario.findByIdAndUpdate(
+        args._id,
+        {
+          nombre: args.nombre,
+          apellido: args.apellido,
+          identificacion: args.identificacion,
+          correo: args.correo,
+          rol: args.rol,
+          estado: args.estado,
+        },
+        {
+          new: true,
+        }
+      );
 
       return usuarioEditado;
     },

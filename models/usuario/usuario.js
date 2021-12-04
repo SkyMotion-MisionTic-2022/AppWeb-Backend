@@ -44,6 +44,11 @@ const userSchema = new Schema({
     enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
     default: 'PENDIENTE',
   },
+  password: {
+    type: String,
+    required: true,
+  }
+
 });
 
 const ModeloUsuario = model('User', userSchema);

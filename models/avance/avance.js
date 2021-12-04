@@ -14,7 +14,7 @@ const avanceSchema = new Schema ({
         type: Date,
         required: true,
     },
-    descripción: {
+    descripcion: {
         type: String,
         required: true,
     },
