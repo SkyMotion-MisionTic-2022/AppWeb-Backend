@@ -39,7 +39,7 @@ const projectSchema = new Schema({
     },
     objetivos: [
         {
-          Descripcion: {
+          descripcion: {
             type: String,
             required: true,
           },
