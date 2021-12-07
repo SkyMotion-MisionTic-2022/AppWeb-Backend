@@ -1,12 +1,38 @@
 import { gql } from 'apollo-server-express';
 
 const tiposAvance = gql`
-    type Avance {
+
+type Observacion {
+    _id: ID!
+    observacion: String!
+}
+
+input crearObservacion {
+    observacion: String!
+}
+
+input editarObservacion {
+    _id: ID!
+    observacion: String!
+}
+
+input camposObservacion {
+    observacion: String!
+}
+
+input camposAvance {
+    proyecto: String
+    fecha: Date
+    descripcion: String
+    creadoPor: String
+}
+
+type Avance {
         _id: ID!
         proyecto: Proyecto!
         fecha: Date!
         descripcion: String!
-        observaciones: [String]
+        observaciones: [Observacion]
         creadoPor: Usuario!
     }
 
@@ -21,7 +47,9 @@ const tiposAvance = gql`
             fecha: Date!
             descripcion: String!
             creadoPor: String!
+            observaciones: [crearObservacion]
         ): Avance
+
         editarAvance(
             _id: String!
             proyecto: String
@@ -30,6 +58,12 @@ const tiposAvance = gql`
             creadoPor: String
         ): Avance
         eliminarAvance (_id: String!): Avance
+
+        crearObservacion(idAvance: String!, campos: camposObservacion): Avance
+
+        editarObservacion(idAvance: String!, indexObservacion: Int!, campos: camposObservacion!): Avance
+        
+        eliminarObservacion(idAvance: String!, idObservacion: String!): Avance
     }
 `;
 
