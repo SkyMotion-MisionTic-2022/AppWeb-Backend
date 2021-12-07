@@ -4,7 +4,7 @@ import { ModeloUsuario } from '../usuario/usuario.js';
 
 const { Schema, model } = mongoose;
 
-const avanceSchema = new Schema ({
+const avanceSchema = new Schema({
     proyecto: {
         type: Schema.Types.ObjectId,
         ref: ModeloProyecto,
@@ -20,9 +20,12 @@ const avanceSchema = new Schema ({
     },
     observaciones: [
         {
-            type: String,
+            observacion: {
+                type: String,
+                required: false
+            },
         },
-    ], 
+    ],
     creadoPor: {
         type: Schema.Types.ObjectId,
         ref: ModeloUsuario,
@@ -30,6 +33,6 @@ const avanceSchema = new Schema ({
     },
 });
 
-const ModeloAvance = model ('Avance', avanceSchema);
+const ModeloAvance = model('Avance', avanceSchema);
 
 export { ModeloAvance };

@@ -35,7 +35,46 @@ const resolverAcance = {
         eliminarAvance: async (parent, args) => {
             const avanceEliminado = await ModeloAvance.findByIdAndDelete(args._id)
             return avanceEliminado;
-        }
+        },
+        crearObservacion: async (parent, args) => {
+            const avanceConObservacion = await ModeloAvance.findByIdAndUpdate(
+                args.idAvance,
+                {
+                    $addToSet: {
+                        observaciones: { ...args.campos },
+                    },
+                },
+                { new: true }
+            );
+            return avanceConObservacion;
+        },
+        editarObservacion: async (parent, args) => {
+            const avanceObservacionEditada = await ModeloAvance.findByIdAndUpdate(
+                args.idAvance,
+                {
+                    $set: {
+                        [`observaciones.${args.indexObservacion}.observacion`]: args.campos.observacion,
+                    },
+                },
+                { new: true }
+            );
+            return avanceObservacionEditada;
+        },
+        eliminarObservacion: async (parent, args) => {
+            const avanceObservacionEliminada = await ModeloAvance.findByIdAndUpdate(
+                { _id: args.idAvance },
+                {
+                    $pull: {
+                        observaciones: {
+                            _id: args.idObservacion,
+                        },
+                    },
+                },
+                { new: true }
+            );
+            return avanceObservacionEliminada;
+        },
+
     },
 };
 

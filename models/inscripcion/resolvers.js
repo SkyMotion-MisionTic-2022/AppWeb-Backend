@@ -44,7 +44,7 @@ const resolverInscripcion = {
         },
 
         eliminarInscripcion: async (parent, args) => {
-            const inscripcionEliminada = await ModeloInscripciones.findOneAndDelete({ _id: args.id });
+            const inscripcionEliminada = await ModeloInscripciones.findOneAndDelete({ _id: args._id });
             return inscripcionEliminada;
         }
     },

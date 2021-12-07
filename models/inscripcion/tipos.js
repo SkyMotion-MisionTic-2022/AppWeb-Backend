@@ -26,8 +26,8 @@ const tiposInscripcion = gql`
             estado: Enum_EstadoInscripcion
             ): Inscripcion
 
-        eliminarInscripcion(_id: String!): String
+        eliminarInscripcion(_id: String!): Inscripcion
     }
 `;
 
-export { tiposInscripcion }; 
+export { tiposInscripcion };
