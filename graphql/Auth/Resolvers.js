@@ -56,7 +56,8 @@ const resolversAutenticacion = {
       }
     },
     validateToken: async (parent, args, context) => {
-      if (!context.auth.user) {
+    
+     if (!context.auth.user) {
         return {
           token: null,
           authorized: false,
