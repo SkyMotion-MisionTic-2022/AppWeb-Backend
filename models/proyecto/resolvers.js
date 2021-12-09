@@ -15,6 +15,10 @@ const projectResolvers = {
       const proyectos = await ModeloProyecto.find();
       return proyectos;
     },
+    Proyecto: async (parent, args) => {
+      const proyecto = await ModeloProyecto.findOne({ _id: args._id });
+      return proyecto;
+    },
   },
 
   // Query: {
