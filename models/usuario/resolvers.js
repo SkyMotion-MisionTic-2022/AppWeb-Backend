@@ -4,9 +4,17 @@ import { generateToken } from '../../utils/tokenUtils.js';
 
 const resolversUsuario = {
   Query: {
-    Usuarios: async (parent, args) => {
-      const usuarios = await ModeloUsuario.find();
-      return usuarios;
+    
+    Usuarios: async (parent, args,context) => {
+      
+      if (context.userData.rol === "ADMINISTRADOR") {
+        const usuarios = await ModeloUsuario.find();
+        return usuarios;
+      } else if (context.userData.rol === "LIDER") {
+        const usuarios = await ModeloUsuario.find({ rol: "ESTUDIANTE" });
+        return usuarios;
+      }
+      return null;
     },
     Usuario: async (parent, args) => {
       const usuario = await ModeloUsuario.findOne({ _id: args._id });
