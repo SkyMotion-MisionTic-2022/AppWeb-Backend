@@ -11,8 +11,9 @@ dotenv.config();
 
 const getUserData = (token) => {
   const verificacion = validateToken(token.split(' ')[1]);
-  if (verificacion.data) {
-    return verificacion.data;
+ 
+  if (verificacion) {
+    return verificacion;
   } else {
     return null;
   }
@@ -27,6 +28,7 @@ const server = new ApolloServer({
       const userData = getUserData(token);
       if (userData) {
         return { userData };
+        
       }
     }
     return null;
