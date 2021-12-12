@@ -1,13 +1,30 @@
+import { ModeloProyecto } from "../proyecto/proyecto.js";
+import { ModeloUsuario } from "../usuario/usuario.js";
 import { ModeloAvance } from "./avance.js";
 
-const resolverAcance = {
+const resolverAvance = {
+    Avance: {
+        creadoPor: async (parent, args, context) => {
+            const estudiante = await ModeloUsuario.findOne({
+                _id: parent.creadoPor.toString(),
+            });
+            return estudiante;
+        },
+        proyecto: async (parent, args, context) => {
+            const prj = await ModeloProyecto.findOne({
+                _id: parent.proyecto.toString(),
+            });
+            return prj;
+        },
+    },
     Query: {
         Avances: async (parent, args) => {
             const avances = await ModeloAvance.find().populate('proyecto').populate('creadoPor');
             return avances;
         },
         filtrarAvance: async (parent, args) => {
-            const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto }).populate('proyecto').populate('creadoPor');
+            // const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto }).populate('proyecto').populate('creadoPor');
+            const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto });
             return avanceFiltrado;
         },
     },
@@ -78,4 +95,4 @@ const resolverAcance = {
     },
 };
 
-export { resolverAcance };
+export { resolverAvance };
