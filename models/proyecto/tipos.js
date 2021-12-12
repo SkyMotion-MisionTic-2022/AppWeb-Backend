@@ -65,7 +65,14 @@ type Mutation {
 
   eliminarProyecto(_id: String): Proyecto
 
-  editarProyecto(_id: String!, campos: camposProyecto!): Proyecto
+  editarProyecto(_id: String!
+    nombre: String
+    presupuesto: Float
+    fechaInicio: Date
+    fechaFin: Date
+    estado: Enum_EstadoProyecto
+    fase: Enum_FaseProyecto
+    lider: String): Proyecto
 
   crearObjetivo(idProyecto: String!, campos: camposObjetivo!): Proyecto
 
