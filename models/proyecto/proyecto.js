@@ -44,7 +44,7 @@ const projectSchema = new Schema({
       },
       tipo: {
         type: String,
-        enum: ["GENERAL", "ESPECÍFICO"],
+        enum: ["GENERAL", "ESPECIFICO"],
         required: true,
       },
     },
