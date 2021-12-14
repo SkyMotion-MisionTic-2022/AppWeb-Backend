@@ -31,7 +31,6 @@ const resolverInscripcion = {
             const inscripcionCreada = await ModeloInscripciones.create({
                 proyecto: args.proyecto,
                 estudiante: args.estudiante,
-                estado: args.estado
             });
             return inscripcionCreada
         },
