@@ -39,6 +39,7 @@ type Avance {
     type Query {
         Avances: [Avance]
         filtrarAvance(idProyecto: String!): [Avance]
+        Avance(_id: String!): Avance
     }
 
     type Mutation {

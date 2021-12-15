@@ -27,6 +27,10 @@ const resolverAvance = {
             const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto });
             return avanceFiltrado;
         },
+        Avance: async (parent, args) => {
+            const avance = await ModeloAvance.findOne({ _id: args._id });
+            return avance;
+        },
     },
 
     Mutation: {
