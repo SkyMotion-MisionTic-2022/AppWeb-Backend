@@ -41,6 +41,19 @@ const resolverAvance = {
                 descripcion: args.descripcion,
                 creadoPor: args.creadoPor,
             });
+
+            const avances = await ModeloAvance.find({ proyecto: avanceCreado.proyecto });
+
+            if (avances.length === 1) {
+                const proyectoModificado = await ModeloProyecto.findOneAndUpdate(
+                    { _id: avanceCreado.proyecto },
+                    {
+                        fase: 'DESARROLLO',
+                    }
+                );
+                // console.log('proy modificado', proyectoModificado);
+            }
+
             return avanceCreado;
         },
         editarAvance: async (parent, args) => {
