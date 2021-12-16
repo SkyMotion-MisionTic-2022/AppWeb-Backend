@@ -21,8 +21,7 @@ const tiposInscripcion = gql`
         ): Inscripcion
 
         aprobarInscripcion(
-            _id: String!
-            estado: Enum_EstadoInscripcion
+            id: String!
             ): Inscripcion
 
         eliminarInscripcion(_id: String!): Inscripcion
