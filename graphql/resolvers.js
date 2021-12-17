@@ -6,3 +6,4 @@ import { resolversAutenticacion } from './auth/resolvers.js'
 
 export const resolvers = [projectResolvers, resolversUsuario, resolverInscripcion, resolverAvance, resolversAutenticacion];
 
+//c
