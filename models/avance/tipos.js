@@ -45,7 +45,7 @@ type Avance {
     type Mutation {
         crearAvance(
             proyecto: String!
-            fecha: Date!
+            fecha: Date
             descripcion: String!
             creadoPor: String!
             observaciones: [crearObservacion]

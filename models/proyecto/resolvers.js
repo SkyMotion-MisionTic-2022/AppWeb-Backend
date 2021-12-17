@@ -60,16 +60,22 @@ const projectResolvers = {
 
     },
     editarProyecto: async (parent, args) => {
+
+      if (args.fase === 'TERMINADO') {
+        args.estado = 'INACTIVO';
+      }
+
       const proyectoEditado = await ModeloProyecto.findByIdAndUpdate(
         args._id,
-        {  nombre: args.nombre,
+        {
+          nombre: args.nombre,
           estado: args.estado,
           fase: args.fase,
           fechaInicio: args.fechaInicio,
           fechaFin: args.fechaFin,
           presupuesto: args.presupuesto,
           lider: args.lider
-         },
+        },
         { new: true }
       );
       return proyectoEditado;
