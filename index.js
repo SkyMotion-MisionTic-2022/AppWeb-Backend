@@ -11,7 +11,7 @@ dotenv.config();
 
 const getUserData = (token) => {
   const verificacion = validateToken(token.split(' ')[1]);
- 
+
   if (verificacion) {
     return verificacion;
   } else {
@@ -28,7 +28,7 @@ const server = new ApolloServer({
       const userData = getUserData(token);
       if (userData) {
         return { userData };
-        
+
       }
     }
     return null;
@@ -41,7 +41,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.listen({ port: process.env.PORT || 4000 }, async () => {
+app.listen({ port: process.env.PORT || 8080 }, async () => {
   await conectarBD();
   await server.start();
 
@@ -49,3 +49,6 @@ app.listen({ port: process.env.PORT || 4000 }, async () => {
 
   console.log('servidor listo');
 });
+
+
+//C
