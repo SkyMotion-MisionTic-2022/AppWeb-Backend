@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    // "dev": "nodemon index.js",
-    // "test": "mocha test --exit"
+    "dev": "nodemon index.js",
+    "test": "mocha test --exit"
   },
   "engines": {
     "node": "14.x"
