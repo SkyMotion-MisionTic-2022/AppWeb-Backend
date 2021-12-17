@@ -27,6 +27,7 @@ const resolversAutenticacion = {
             correo: usuarioCreado.correo,
             password: usuarioCreado.password,
             rol: usuarioCreado.rol,
+            estado: 'PENDIENTE',
           }),
           authorized: true,
         };
@@ -48,6 +49,7 @@ const resolversAutenticacion = {
             correo: usuario.correo,
             password: usuario.password,
             rol: usuario.rol,
+            estado: usuario.estado,
           }),
           authorized: true,
         };
