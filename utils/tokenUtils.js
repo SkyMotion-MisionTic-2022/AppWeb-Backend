@@ -7,7 +7,6 @@ const validateToken = (token) => {
     });
     return ver;
   } else {
-   
     return null;
   }
 };

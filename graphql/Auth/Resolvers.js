@@ -25,7 +25,9 @@ const resolversAutenticacion = {
             apellido: usuarioCreado.apellido,
             identificacion: usuarioCreado.identificacion,
             correo: usuarioCreado.correo,
+            password: usuarioCreado.password,
             rol: usuarioCreado.rol,
+            estado: 'PENDIENTE',
           }),
           authorized: true,
         };
@@ -45,7 +47,9 @@ const resolversAutenticacion = {
             apellido: usuario.apellido,
             identificacion: usuario.identificacion,
             correo: usuario.correo,
+            password: usuario.password,
             rol: usuario.rol,
+            estado: usuario.estado,
           }),
           authorized: true,
         };
@@ -56,6 +60,7 @@ const resolversAutenticacion = {
       }
     },
     validateToken: async (parent, args, context) => {
+
       if (!context.auth.user) {
         return {
           token: null,
