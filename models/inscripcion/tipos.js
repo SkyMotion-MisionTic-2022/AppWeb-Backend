@@ -18,12 +18,10 @@ const tiposInscripcion = gql`
         crearInscripcion(
             proyecto: String!
             estudiante: String!
-            estado: Enum_EstadoInscripcion!
         ): Inscripcion
 
         aprobarInscripcion(
-            _id: String!
-            estado: Enum_EstadoInscripcion
+            id: String!
             ): Inscripcion
 
         eliminarInscripcion(_id: String!): Inscripcion

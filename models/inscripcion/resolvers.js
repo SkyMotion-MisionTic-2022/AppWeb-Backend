@@ -13,33 +13,43 @@ const resolverInscripcion = {
     },
 
     Query: {
-        Inscripciones: async (parent, args) => {
-            const inscripciones = await ModeloInscripciones.find();
+        Inscripciones: async (parent, args, context) => {
+            let filtro = {};
+            if (context.userData){
+                if(context.userData.rol === 'LIDER') {
+                 const projects = await ModeloProyecto.find({ lider: context.userData._id});
+                 const listaProyecto = projects.map((p) => p._id.toString());
+                 filtro ={
+                     proyecto:{
+                        $in: listaProyecto,
+                        },
+                    };
+                }
+            }
+            const inscripciones = await  ModeloInscripciones.find({...filtro});
             return inscripciones;
         },
     },
 
-    // Query: {
-    //     Inscripciones: async (parent, args) => {
-    //         const inscripciones = await ModeloInscripciones.find().populate('estudiante').populate('proyecto');
-    //         return inscripciones;
-    //     }    
-    // },
 
     Mutation: {
         crearInscripcion: async (parent, args) => {
             const inscripcionCreada = await ModeloInscripciones.create({
                 proyecto: args.proyecto,
                 estudiante: args.estudiante,
-                estado: args.estado
             });
             return inscripcionCreada
         },
 
         aprobarInscripcion: async (parent, args) => {
-            const inscripcionAprobada = await ModeloInscripciones.findByIdAndUpdate(args._id, {
-                estado: args.estado
-            }, { new: true });
+            const inscripcionAprobada = await ModeloInscripciones.findByIdAndUpdate(
+                args.id, 
+            {
+                estado: 'ACEPTADA',
+                fechaIngreso: Date.now(),
+            }, 
+                { new: true }
+            );
             return inscripcionAprobada
         },
 

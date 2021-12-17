@@ -12,8 +12,18 @@ const projectResolvers = {
   },
   Query: {
     Proyectos: async (parent, args, context) => {
-      const proyectos = await ModeloProyecto.find();
-      return proyectos;
+      if (context.userData.rol === "ADMINISTRADOR" || context.userData.rol === "ESTUDIANTE") {
+        const proyectos = await ModeloProyecto.find().populate('lider').populate("avances").populate("inscripciones");
+        return proyectos;
+      } else if (context.userData.rol === "LIDER") {
+        const proyectos = await ModeloProyecto.find({ lider: context.userData._id });
+        return proyectos;
+      }
+      return null;
+    },
+    Proyecto: async (parent, args) => {
+      const proyecto = await ModeloProyecto.findOne({ _id: args._id });
+      return proyecto;
     },
   },
 
@@ -52,7 +62,14 @@ const projectResolvers = {
     editarProyecto: async (parent, args) => {
       const proyectoEditado = await ModeloProyecto.findByIdAndUpdate(
         args._id,
-        { ...args.campos },
+        {  nombre: args.nombre,
+          estado: args.estado,
+          fase: args.fase,
+          fechaInicio: args.fechaInicio,
+          fechaFin: args.fechaFin,
+          presupuesto: args.presupuesto,
+          lider: args.lider
+         },
         { new: true }
       );
       return proyectoEditado;
