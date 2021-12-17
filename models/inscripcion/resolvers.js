@@ -15,18 +15,18 @@ const resolverInscripcion = {
     Query: {
         Inscripciones: async (parent, args, context) => {
             let filtro = {};
-            if (context.userData){
-                if(context.userData.rol === 'LIDER') {
-                 const projects = await ModeloProyecto.find({ lider: context.userData._id});
-                 const listaProyecto = projects.map((p) => p._id.toString());
-                 filtro ={
-                     proyecto:{
-                        $in: listaProyecto,
+            if (context.userData) {
+                if (context.userData.rol === 'LIDER') {
+                    const projects = await ModeloProyecto.find({ lider: context.userData._id });
+                    const listaProyecto = projects.map((p) => p._id.toString());
+                    filtro = {
+                        proyecto: {
+                            $in: listaProyecto,
                         },
                     };
                 }
             }
-            const inscripciones = await  ModeloInscripciones.find({...filtro});
+            const inscripciones = await ModeloInscripciones.find({ ...filtro });
             return inscripciones;
         },
     },
@@ -43,15 +43,28 @@ const resolverInscripcion = {
 
         aprobarInscripcion: async (parent, args) => {
             const inscripcionAprobada = await ModeloInscripciones.findByIdAndUpdate(
-                args.id, 
-            {
-                estado: 'ACEPTADA',
-                fechaIngreso: Date.now(),
-            }, 
+                args.id,
+                {
+                    estado: 'ACEPTADA',
+                    fechaIngreso: Date.now(),
+                },
                 { new: true }
             );
             return inscripcionAprobada
         },
+
+        rechazarInscripcion: async (parent, args) => {
+            const inscripcionRechazada = await ModeloInscripciones.findByIdAndUpdate(
+                args.id,
+                {
+                    estado: 'RECHAZADA',
+                    fechaIngreso: Date.now(),
+                },
+                { new: true }
+            );
+            return inscripcionRechazada
+        },
+
 
         eliminarInscripcion: async (parent, args) => {
             const inscripcionEliminada = await ModeloInscripciones.findOneAndDelete({ _id: args._id });
