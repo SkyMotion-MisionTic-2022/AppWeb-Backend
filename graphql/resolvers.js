@@ -5,3 +5,5 @@ import { resolverAvance } from '../models/avance/resolvers.js';
 import { resolversAutenticacion } from './auth/resolvers.js'
 
 export const resolvers = [projectResolvers, resolversUsuario, resolverInscripcion, resolverAvance, resolversAutenticacion];
+
+//Coment
