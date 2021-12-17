@@ -19,3 +19,5 @@ export const tipos = [
     tiposAvance,  
     tiposAutenticacion  
 ];
+
+//con
