@@ -4,7 +4,7 @@ import { tiposAvance } from '../models/avance/tipos.js';
 import { tiposEnums } from '../models/enums/tipos.js';
 import { tiposUsuario } from '../models/usuario/tipos.js';
 import { tiposInscripcion } from '../models/inscripcion/tipos.js';
-import { tiposAutenticacion } from './auth/types.js'
+import { tiposAutenticacion } from './auth2/types.js'
 
 const tiposGlobales = gql`
     scalar Date
